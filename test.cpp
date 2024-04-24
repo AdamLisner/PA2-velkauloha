@@ -1,5 +1,7 @@
 #ifndef __PROGTEST__
-
+/**
+ * g++ -std=c++20 -Wall -pedantic -g -o excel test.cpp ASTBuilder.cpp AST.cpp -I. -L./x86_64-linux-gnu -lexpression_parser -fsanitize=address
+ * */
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
@@ -35,9 +37,8 @@
 #include <span>
 #include <utility>
 #include "expression.h"
-#include "AST.h"
 #include "ASTBuilder.h"
-#include "CCell.cpp"
+#include "CCell.h"
 
 using namespace std::literals;
 using CValue = std::variant<std::monostate, double, std::string>;
@@ -49,41 +50,69 @@ constexpr unsigned SPREADSHEET_SPEED = 0x08;
 constexpr unsigned SPREADSHEET_PARSER = 0x10;
 #endif /* __PROGTEST__ */
 
+/*
+ * Quelle: https://www.geeksforgeeks.org/how-to-create-an-unordered_map-of-pairs-in-c/
+ *
+ * */
+struct hash_pair {
+    size_t operator()(const std::pair<size_t, size_t> &p) const {
+        auto hash1 = std::hash<size_t>{}(p.first);
+        auto hash2 = std::hash<size_t>{}(p.second);
 
+        if (hash1 != hash2) {
+            return hash1 ^ hash2;
+        }
+
+        return hash1;
+    }
+};
 
 class CPos {
 public:
-    CPos(std::string_view str):hashed(getHash(str)){};
-    size_t getHash(std::string_view str) const;
-    size_t hashed;
-private:
 
+    std::pair<size_t, size_t> strToPair(const std::string &str) const {
+
+        std::string pos;
+
+        size_t col = 0;
+        size_t row = 0;
+        size_t i = 0;
+        int mul = 26;
+        for (; !isdigit(str[i]); i++) {
+            char c = (toupper)(str[i]);
+            if (c < 'A' || c > 'Z') {
+                throw std::invalid_argument("invalid argument passed");
+            }
+            col *= mul;
+            col += c - 'A' + 1;
+        }
+
+        for (; i < str.length(); i++) {
+            if (str[i] < '0' || str[i] > '9') {
+                throw std::invalid_argument("invalid argument passed");
+            }
+            row *= 10;
+            row += str[i] - '0';
+        }
+
+        return std::make_pair(col, row);
+    }
+
+    CPos(const std::string &pos) : m_Pos(strToPair(pos)) {};
+
+    std::pair<size_t, size_t> getPos() const {
+        return m_Pos;
+    }
+
+private:
+    std::pair<size_t, size_t> m_Pos;
 };
 
-size_t CPos::getHash(std::string_view str) const{
-    size_t cnt = 0;
-    size_t power = 1;
-    std::string lowercase_str(str);
-    std::transform(lowercase_str.begin(), lowercase_str.end(), lowercase_str.begin(), [](unsigned char c) { return std::tolower(c); });
-    for(size_t i = lowercase_str.length(); i > 0; i--) {
-        size_t digit_value = 0;
-        if(std::isdigit(lowercase_str[i - 1])) {
-            digit_value = lowercase_str[i - 1] - '0';
-        } else if(std::isalpha(lowercase_str[i - 1])) { // Pokud se jedná o písmeno, převést na odpovídající číselnou hodnotu
-            digit_value = lowercase_str[i - 1] - 'a' + 10; // předpokládáme, že používáme hexadecimální systém, takže A=10, B=11, atd.
-        }
-        cnt += digit_value * power;
-
-        // Zvýšit mocninu pro další číslici
-        power *= 36;
-    }
-    return cnt;
-}
 
 class CSpreadsheet {
 public:
     static unsigned capabilities() {
-        return SPREADSHEET_CYCLIC_DEPS | SPREADSHEET_FUNCTIONS | SPREADSHEET_FILE_IO | SPREADSHEET_SPEED;
+        return SPREADSHEET_CYCLIC_DEPS | SPREADSHEET_FILE_IO | SPREADSHEET_SPEED;
     }
 
     CSpreadsheet() = default;
@@ -103,21 +132,13 @@ public:
                   int h = 1);
 
 private:
-    std::unordered_map<size_t ,CCell> m_Sheet;
+    ASTBuilder builder;
+    std::unordered_map<std::pair<size_t, size_t>, CCell, hash_pair> m_Sheet;
 };
 
 
-
-
 bool CSpreadsheet::setCell(CPos pos, std::string contents) {
-    size_t key = pos.hashed;
-    try {
-        double val = std::stod(contents);
-        std::cout << "je to double";
-    } catch (const std::invalid_argument&) {
-        std::cout << "je to string";
-    }
-    m_Sheet [key] = CCell(contents);
+    parseExpression(contents, builder);
     return true;
 }
 
@@ -161,7 +182,7 @@ int main() {
     std::ostringstream oss;
     std::istringstream iss;
     std::string data;
-    assert (x0.setCell(CPos("A1"), "10"));
+    assert (x0.setCell(CPos("A1"), "=10+5*11"));
     assert (x0.setCell(CPos("A2"), "20.5"));
     assert (x0.setCell(CPos("A3"), "3e1"));
     assert (x0.setCell(CPos("A4"), "=40"));

@@ -1,32 +1,89 @@
+#include <variant>
 #include "memory"
-class ASTNode {};
 
-class ASTNodeValue        : public ASTNode {};
+using CValue = std::variant<std::monostate, double, std::string>;
 
-class ASTNodeLiteral      : public ASTNodeValue {};
-
-class ASTNodeDouble       : public ASTNodeLiteral {};
-
-class ASTNodeString       : public ASTNodeLiteral {};
-
-class ASTNodeRelative     : public ASTNodeValue {};
-
-class ASTNodeRelativeFull : public ASTNodeRelative{};
-
-class ASTNodeRelativeCol  : public ASTNodeRelative{};
-
-class ASTNodeRelativeRow  : public ASTNodeRelative{};
-
-class ASTNodeOperand      : public ASTNode {
+class ASTNode {
 public:
+    virtual ~ASTNode() = default;
+    virtual CValue evaluate() const = 0;
 protected:
-    std::shared_ptr<ASTNode> m_Left;
-    std::shared_ptr<ASTNode> m_Right;
+private:
 };
 
-class ASTAdd         : public ASTNodeOperand {};
-class ASTSub         : public ASTNodeOperand {};
-class ASTDiv         : public ASTNodeOperand {};
-class ASTMul         : public ASTNodeOperand {};
-class ASTPow         : public ASTNodeOperand {};
+
+class ASTNodeDouble : public ASTNode {
+public:
+    CValue evaluate() const override;
+protected:
+private:
+    double m_Val;
+};
+
+class ASTNodeString : public ASTNode {
+public:
+    CValue evaluate() const override;
+protected:
+private:
+    std::string m_Val;
+};
+
+
+class ASTNodeRelativeFull : public ASTNode {
+};
+
+class ASTNodeRelativeCol : public ASTNode {
+};
+
+class ASTNodeRelativeRow : public ASTNode {
+};
+
+using ASTLeaf = std::shared_ptr<ASTNode>;
+
+class ASTOperator : public ASTNode {
+public:
+    virtual CValue evaluate() = 0;
+    ASTOperator(ASTLeaf left, ASTLeaf right): m_Left(std::move(left)), m_Right(std::move(right)){};
+protected:
+    ASTLeaf m_Left;
+    ASTLeaf m_Right;
+};
+
+
+
+class ASTAdd : public ASTOperator {
+public:
+    CValue evaluate() const override;
+
+
+    ASTAdd(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
+};
+
+class ASTSub : public ASTOperator {
+public:
+    CValue evaluate() const override;
+    ASTSub(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
+
+};
+
+class ASTDiv : public ASTOperator {
+public:
+    CValue evaluate() const override;
+    ASTDiv(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
+
+};
+
+class ASTMul : public ASTOperator {
+public:
+    CValue evaluate() const override;
+    ASTMul(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
+
+};
+
+class ASTPow : public ASTOperator {
+public:
+    CValue evaluate() const override;
+    ASTPow(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
+
+};
 

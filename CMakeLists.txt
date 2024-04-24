@@ -8,4 +8,5 @@ include_directories(.)
 add_executable(velkauloha
         expression.h
         test.cpp
-        ASTBuilder.cpp)
+        ASTBuilder.cpp
+        AST.cpp)

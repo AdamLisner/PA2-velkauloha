@@ -5,42 +5,44 @@
 #include <iostream>
 
 
-class ASTBuilder: public CExprBuilder {
+class ASTBuilder : public CExprBuilder {
 public:
-     void opAdd() ;
 
-     void opSub() ;
+    void opAdd() override;
 
-     void opMul() ;
+    void opSub() override;
 
-     void opDiv() ;
+    void opMul() override;
 
-     void opPow() ;
+    void opDiv() override;
 
-     void opNeg() ;
+    void opPow() override;
 
-     void opEq() ;
+    void opNeg() override;
 
-     void opNe() ;
+    void opEq() override;
 
-     void opLt() ;
+    void opNe() override;
 
-     void opLe() ;
+    void opLt() override;
 
-     void opGt() ;
+    void opLe() override;
 
-     void opGe();
+    void opGt() override;
 
-     void valNumber(double val);
+    void opGe() override;
 
-     void valString(std::string val);
+    void valNumber(double val) override;
 
-     void valReference(std::string val);
+    void valString(std::string val) override;
 
-     void valRange(std::string val);
+    void valReference(std::string val) override;
 
-     void funcCall(std::string fnName,
-                          int paramCount);
+    void valRange(std::string val) override;
+
+    void funcCall(std::string fnName,
+                  int paramCount) override;
+
 private:
 
     std::stack<std::shared_ptr<ASTNode>> m_Stack;
