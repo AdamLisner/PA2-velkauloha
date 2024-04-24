@@ -56,6 +56,13 @@ build CMakeFiles/velkauloha.dir/test.cpp.o: CXX_COMPILER__velkauloha_unscanned_D
   OBJECT_DIR = CMakeFiles/velkauloha.dir
   OBJECT_FILE_DIR = CMakeFiles/velkauloha.dir
 
+build CMakeFiles/velkauloha.dir/ASTBuilder.cpp.o: CXX_COMPILER__velkauloha_unscanned_Debug /home/adam/Documents/FIT/velkauloha/ASTBuilder.cpp || cmake_object_order_depends_target_velkauloha
+  DEP_FILE = CMakeFiles/velkauloha.dir/ASTBuilder.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -I/home/adam/Documents/FIT/velkauloha/.
+  OBJECT_DIR = CMakeFiles/velkauloha.dir
+  OBJECT_FILE_DIR = CMakeFiles/velkauloha.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target velkauloha
@@ -64,7 +71,7 @@ build CMakeFiles/velkauloha.dir/test.cpp.o: CXX_COMPILER__velkauloha_unscanned_D
 #############################################
 # Link the executable velkauloha
 
-build velkauloha: CXX_EXECUTABLE_LINKER__velkauloha_Debug CMakeFiles/velkauloha.dir/test.cpp.o
+build velkauloha: CXX_EXECUTABLE_LINKER__velkauloha_Debug CMakeFiles/velkauloha.dir/test.cpp.o CMakeFiles/velkauloha.dir/ASTBuilder.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/velkauloha.dir
   POST_BUILD = :

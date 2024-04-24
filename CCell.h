@@ -1,5 +1,0 @@
-class CCell {
-public:
-private:
-
-};

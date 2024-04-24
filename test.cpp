@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <string>
 #include <array>
+#include <utility>
 #include <vector>
 #include <list>
 #include <set>
@@ -34,6 +35,9 @@
 #include <span>
 #include <utility>
 #include "expression.h"
+#include "AST.h"
+#include "ASTBuilder.h"
+#include "CCell.cpp"
 
 using namespace std::literals;
 using CValue = std::variant<std::monostate, double, std::string>;
@@ -45,23 +49,44 @@ constexpr unsigned SPREADSHEET_SPEED = 0x08;
 constexpr unsigned SPREADSHEET_PARSER = 0x10;
 #endif /* __PROGTEST__ */
 
+
+
 class CPos {
 public:
-    CPos(std::string_view str);
+    CPos(std::string_view str):hashed(getHash(str)){};
     size_t getHash(std::string_view str) const;
+    size_t hashed;
 private:
-    size_t col;
-    size_t row;
+
 };
+
+size_t CPos::getHash(std::string_view str) const{
+    size_t cnt = 0;
+    size_t power = 1;
+    std::string lowercase_str(str);
+    std::transform(lowercase_str.begin(), lowercase_str.end(), lowercase_str.begin(), [](unsigned char c) { return std::tolower(c); });
+    for(size_t i = lowercase_str.length(); i > 0; i--) {
+        size_t digit_value = 0;
+        if(std::isdigit(lowercase_str[i - 1])) {
+            digit_value = lowercase_str[i - 1] - '0';
+        } else if(std::isalpha(lowercase_str[i - 1])) { // Pokud se jedná o písmeno, převést na odpovídající číselnou hodnotu
+            digit_value = lowercase_str[i - 1] - 'a' + 10; // předpokládáme, že používáme hexadecimální systém, takže A=10, B=11, atd.
+        }
+        cnt += digit_value * power;
+
+        // Zvýšit mocninu pro další číslici
+        power *= 36;
+    }
+    return cnt;
+}
 
 class CSpreadsheet {
 public:
     static unsigned capabilities() {
-        return SPREADSHEET_CYCLIC_DEPS | SPREADSHEET_FUNCTIONS | SPREADSHEET_FILE_IO | SPREADSHEET_SPEED |
-               SPREADSHEET_PARSER;
+        return SPREADSHEET_CYCLIC_DEPS | SPREADSHEET_FUNCTIONS | SPREADSHEET_FILE_IO | SPREADSHEET_SPEED;
     }
 
-    CSpreadsheet();
+    CSpreadsheet() = default;
 
     bool load(std::istream &is);
 
@@ -78,9 +103,40 @@ public:
                   int h = 1);
 
 private:
-    std::unordered_map<CPos,CCell> m_Sheet;
-    // todo
+    std::unordered_map<size_t ,CCell> m_Sheet;
 };
+
+
+
+
+bool CSpreadsheet::setCell(CPos pos, std::string contents) {
+    size_t key = pos.hashed;
+    try {
+        double val = std::stod(contents);
+        std::cout << "je to double";
+    } catch (const std::invalid_argument&) {
+        std::cout << "je to string";
+    }
+    m_Sheet [key] = CCell(contents);
+    return true;
+}
+
+CValue CSpreadsheet::getValue(CPos pos) {
+    return CValue();
+}
+
+bool CSpreadsheet::load(std::istream &is) {
+    return false;
+}
+
+bool CSpreadsheet::save(std::ostream &os) const {
+    return false;
+}
+
+void CSpreadsheet::copyRect(CPos dst, CPos src, int w, int h) {
+
+}
+
 
 #ifndef __PROGTEST__
 
