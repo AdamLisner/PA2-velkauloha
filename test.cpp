@@ -139,6 +139,9 @@ private:
 
 bool CSpreadsheet::setCell(CPos pos, std::string contents) {
     parseExpression(contents, builder);
+    CCell cell(contents,builder.stack().top());
+    builder.stack().pop();
+    m_Sheet[pos.getPos()] = cell;
     return true;
 }
 
@@ -182,7 +185,7 @@ int main() {
     std::ostringstream oss;
     std::istringstream iss;
     std::string data;
-    assert (x0.setCell(CPos("A1"), "=10+5*11"));
+    assert (x0.setCell(CPos("A1"), "=10+5*3"));
     assert (x0.setCell(CPos("A2"), "20.5"));
     assert (x0.setCell(CPos("A3"), "3e1"));
     assert (x0.setCell(CPos("A4"), "=40"));

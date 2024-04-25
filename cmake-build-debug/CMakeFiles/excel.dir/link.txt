@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/excel.dir/test.cpp.o CMakeFiles/excel.dir/ASTBuilder.cpp.o CMakeFiles/excel.dir/AST.cpp.o -o excel   -L/home/adam/Documents/School/velkauloha/x86_64-linux-gnu  -Wl,-rpath,/home/adam/Documents/School/velkauloha/x86_64-linux-gnu -lexpression_parser 

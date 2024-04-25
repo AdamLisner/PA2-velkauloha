@@ -1,33 +1,59 @@
 #include "ASTBuilder.h"
 
+using ASTLeaf = std::shared_ptr<ASTNode>;
+
+
 void ASTBuilder::opAdd() {
-    //ASTAdd add;
     std::cout << " + ";
-    //m_Stack.push(std::make_shared<ASTNode>(add));
+    ASTLeaf right = m_Stack.top();
+    m_Stack.pop();
+    ASTLeaf left = m_Stack.top();
+    m_Stack.pop();
+
+    ASTAdd add(left,right);
+
+    m_Stack.push(std::make_shared<ASTAdd>(add));
 }
 
 void ASTBuilder::opSub() {
-    //ASTSub sub;
     std::cout << " - ";
-    //m_Stack.push(std::make_shared<ASTNode>(sub));
+    ASTLeaf right = m_Stack.top();
+    m_Stack.pop();
+    ASTLeaf left = m_Stack.top();
+    m_Stack.pop();
+    ASTSub sub(left,right);
+    m_Stack.push(std::make_shared<ASTSub>(sub));
 }
 
 void ASTBuilder::opMul() {
-    //ASTMul mul;
     std::cout << " * ";
-    //m_Stack.push(std::make_shared<ASTNode>(mul));
+    ASTLeaf right = m_Stack.top();
+    m_Stack.pop();
+    ASTLeaf left = m_Stack.top();
+    m_Stack.pop();
+    ASTMul mul(left,right);
+    m_Stack.push(std::make_shared<ASTMul>(mul));
 }
 
 void ASTBuilder::opDiv() {
-    //ASTDiv div;
     std::cout << " / ";
-    //m_Stack.push(std::make_shared<ASTNode>(div));
+    ASTLeaf right = m_Stack.top();
+    m_Stack.pop();
+    ASTLeaf left = m_Stack.top();
+    m_Stack.pop();
+    ASTDiv div(left,right);
+    m_Stack.push(std::make_shared<ASTDiv>(div));
 }
 
 void ASTBuilder::opPow() {
     //ASTPow pow;
     std::cout << " ^ ";
-    //m_Stack.push(std::make_shared<ASTNode>(pow));
+    ASTLeaf right = m_Stack.top();
+    m_Stack.pop();
+    ASTLeaf left = m_Stack.top();
+    m_Stack.pop();
+    ASTPow pow(left,right);
+    m_Stack.push(std::make_shared<ASTPow>(pow));
 }
 
 void ASTBuilder::opNeg() {
@@ -74,16 +100,22 @@ void ASTBuilder::opGe() {
 
 void ASTBuilder::valNumber(double val) {
     // Implementation for handling numeric value
+    ASTNodeValue node(val);
+    m_Stack.push(std::make_shared<ASTNodeValue>(node));
     std::cout << val;
 }
 
 void ASTBuilder::valString(std::string val) {
     // Implementation for handling string value
+    ASTNodeValue node(val);
+    m_Stack.push(std::make_shared<ASTNodeValue>(node));
     std::cout << val;
 }
 
 void ASTBuilder::valReference(std::string val) {
     // Implementation for handling reference value
+    ASTNodeValue node(val);
+    m_Stack.push(std::make_shared<ASTNodeValue>(node));
     std::cout << val;
 }
 

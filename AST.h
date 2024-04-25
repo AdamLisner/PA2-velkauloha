@@ -12,38 +12,31 @@ private:
 };
 
 
-class ASTNodeDouble : public ASTNode {
+class ASTNodeValue : public ASTNode {
 public:
+    ASTNodeValue() : m_Val(std::monostate()){};
+    ASTNodeValue(const CValue& c): m_Val(c){};
     CValue evaluate() const override;
 protected:
 private:
-    double m_Val;
+    CValue m_Val;
 };
 
-class ASTNodeString : public ASTNode {
+
+
+
+class ASTNodeReference : public ASTNode {
 public:
-    CValue evaluate() const override;
-protected:
 private:
-    std::string m_Val;
-};
-
-
-class ASTNodeRelativeFull : public ASTNode {
-};
-
-class ASTNodeRelativeCol : public ASTNode {
-};
-
-class ASTNodeRelativeRow : public ASTNode {
+    bool absCol;
+    bool absRow;
 };
 
 using ASTLeaf = std::shared_ptr<ASTNode>;
 
-class ASTOperator : public ASTNode {
+class ASTBinOperator : public ASTNode {
 public:
-    virtual CValue evaluate() = 0;
-    ASTOperator(ASTLeaf left, ASTLeaf right): m_Left(std::move(left)), m_Right(std::move(right)){};
+    ASTBinOperator(ASTLeaf left, ASTLeaf right): m_Left(std::move(left)), m_Right(std::move(right)){};
 protected:
     ASTLeaf m_Left;
     ASTLeaf m_Right;
@@ -51,39 +44,37 @@ protected:
 
 
 
-class ASTAdd : public ASTOperator {
+class ASTAdd : public ASTBinOperator {
 public:
+    ASTAdd(ASTLeaf left, ASTLeaf right): ASTBinOperator(std::move(left), std::move(right)){};
     CValue evaluate() const override;
-
-
-    ASTAdd(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
 };
 
-class ASTSub : public ASTOperator {
+class ASTSub : public ASTBinOperator {
 public:
+    ASTSub(ASTLeaf left, ASTLeaf right): ASTBinOperator(std::move(left), std::move(right)){};
     CValue evaluate() const override;
-    ASTSub(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
-
-};
-
-class ASTDiv : public ASTOperator {
-public:
-    CValue evaluate() const override;
-    ASTDiv(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
 
 };
 
-class ASTMul : public ASTOperator {
+class ASTDiv : public ASTBinOperator {
 public:
+    ASTDiv(ASTLeaf left, ASTLeaf right): ASTBinOperator(std::move(left), std::move(right)){};
     CValue evaluate() const override;
-    ASTMul(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
 
 };
 
-class ASTPow : public ASTOperator {
+class ASTMul : public ASTBinOperator {
+public:
+    ASTMul(ASTLeaf left, ASTLeaf right): ASTBinOperator(std::move(left), std::move(right)){};
+    CValue evaluate() const override;
+
+};
+
+class ASTPow : public ASTBinOperator {
 public:
     CValue evaluate() const override;
-    ASTPow(ASTLeaf left, ASTLeaf right): ASTOperator(left,right){};
+    ASTPow(ASTLeaf left, ASTLeaf right): ASTBinOperator(left, right){};
 
 };
 

@@ -159,7 +159,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=velkauloha
+CMAKE_PROJECT_NAME:STATIC=VelkaUloha
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -226,11 +226,29 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Value Computed by CMake
+ExcelProject_BINARY_DIR:STATIC=/home/adam/Documents/School/velkauloha/cmake-build-debug
+
+//Value Computed by CMake
+ExcelProject_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+ExcelProject_SOURCE_DIR:STATIC=/home/adam/Documents/School/velkauloha
+
 //Path to a program.
 ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
+
+//Value Computed by CMake
+VelkaUloha_BINARY_DIR:STATIC=/home/adam/Documents/School/velkauloha/cmake-build-debug
+
+//Value Computed by CMake
+VelkaUloha_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+VelkaUloha_SOURCE_DIR:STATIC=/home/adam/Documents/School/velkauloha
 
 //Value Computed by CMake
 velkauloha_BINARY_DIR:STATIC=/home/adam/Documents/School/velkauloha/cmake-build-debug

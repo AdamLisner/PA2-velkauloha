@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named velkauloha
+# Target rules for targets named VelkaUloha
 
 # Build rule for target.
-velkauloha: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 velkauloha
-.PHONY : velkauloha
+VelkaUloha: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VelkaUloha
+.PHONY : VelkaUloha
 
 # fast build rule for target.
-velkauloha/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/build
-.PHONY : velkauloha/fast
+VelkaUloha/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/build
+.PHONY : VelkaUloha/fast
 
 AST.o: AST.cpp.o
 .PHONY : AST.o
 
 # target to build an object file
 AST.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/AST.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/AST.cpp.o
 .PHONY : AST.cpp.o
 
 AST.i: AST.cpp.i
@@ -142,7 +142,7 @@ AST.i: AST.cpp.i
 
 # target to preprocess a source file
 AST.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/AST.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/AST.cpp.i
 .PHONY : AST.cpp.i
 
 AST.s: AST.cpp.s
@@ -150,7 +150,7 @@ AST.s: AST.cpp.s
 
 # target to generate assembly for a file
 AST.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/AST.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/AST.cpp.s
 .PHONY : AST.cpp.s
 
 ASTBuilder.o: ASTBuilder.cpp.o
@@ -158,7 +158,7 @@ ASTBuilder.o: ASTBuilder.cpp.o
 
 # target to build an object file
 ASTBuilder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/ASTBuilder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.o
 .PHONY : ASTBuilder.cpp.o
 
 ASTBuilder.i: ASTBuilder.cpp.i
@@ -166,7 +166,7 @@ ASTBuilder.i: ASTBuilder.cpp.i
 
 # target to preprocess a source file
 ASTBuilder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/ASTBuilder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.i
 .PHONY : ASTBuilder.cpp.i
 
 ASTBuilder.s: ASTBuilder.cpp.s
@@ -174,7 +174,7 @@ ASTBuilder.s: ASTBuilder.cpp.s
 
 # target to generate assembly for a file
 ASTBuilder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/ASTBuilder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.s
 .PHONY : ASTBuilder.cpp.s
 
 test.o: test.cpp.o
@@ -182,7 +182,7 @@ test.o: test.cpp.o
 
 # target to build an object file
 test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/test.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/test.cpp.o
 .PHONY : test.cpp.o
 
 test.i: test.cpp.i
@@ -190,7 +190,7 @@ test.i: test.cpp.i
 
 # target to preprocess a source file
 test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/test.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/test.cpp.i
 .PHONY : test.cpp.i
 
 test.s: test.cpp.s
@@ -198,7 +198,7 @@ test.s: test.cpp.s
 
 # target to generate assembly for a file
 test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/test.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/test.cpp.s
 .PHONY : test.cpp.s
 
 # Help Target
@@ -209,7 +209,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... velkauloha"
+	@echo "... VelkaUloha"
 	@echo "... AST.o"
 	@echo "... AST.i"
 	@echo "... AST.s"

@@ -1,17 +1,12 @@
 #include "AST.h"
+using CValue = std::variant<std::monostate, double, std::string>;
 
 // ASTNodeDouble implementation
-CValue ASTNodeDouble::evaluate() const {
+CValue ASTNodeValue::evaluate() const {
     // Implement evaluation logic for double node
     return std::monostate();
 }
 
-// ASTNodeString implementation
-CValue ASTNodeString::evaluate() const {
-    // Implement evaluation logic for string node
-    return std::monostate();
-
-}
 
 // ASTAdd implementation
 CValue ASTAdd::evaluate() const {

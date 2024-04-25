@@ -42,9 +42,11 @@ public:
 
     void funcCall(std::string fnName,
                   int paramCount) override;
-
+    std::stack<std::shared_ptr<ASTNode>>& stack() {
+        return m_Stack;
+    }
 private:
 
-    std::stack<std::shared_ptr<ASTNode>> m_Stack;
+   std::stack<std::shared_ptr<ASTNode>> m_Stack;
 
 };

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/my_program.dir/test.cpp.o CMakeFiles/my_program.dir/ASTBuilder.cpp.o CMakeFiles/my_program.dir/AST.cpp.o -o my_program   -L/home/adam/Documents/School/velkauloha/x86_64-linux-gnu  -Wl,-rpath,/home/adam/Documents/School/velkauloha/x86_64-linux-gnu -lexpression_parser 

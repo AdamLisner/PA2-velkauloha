@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/adam/Documents/School/velkauloha/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/velkauloha.dir/all
+all: CMakeFiles/VelkaUloha.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/velkauloha.dir/clean
+clean: CMakeFiles/VelkaUloha.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/velkauloha.dir
+# Target rules for target CMakeFiles/VelkaUloha.dir
 
 # All Build rule for target.
-CMakeFiles/velkauloha.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/adam/Documents/School/velkauloha/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target velkauloha"
-.PHONY : CMakeFiles/velkauloha.dir/all
+CMakeFiles/VelkaUloha.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/adam/Documents/School/velkauloha/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target VelkaUloha"
+.PHONY : CMakeFiles/VelkaUloha.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/velkauloha.dir/rule: cmake_check_build_system
+CMakeFiles/VelkaUloha.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Documents/School/velkauloha/cmake-build-debug/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/velkauloha.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/VelkaUloha.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/adam/Documents/School/velkauloha/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/velkauloha.dir/rule
+.PHONY : CMakeFiles/VelkaUloha.dir/rule
 
 # Convenience name for target.
-velkauloha: CMakeFiles/velkauloha.dir/rule
-.PHONY : velkauloha
+VelkaUloha: CMakeFiles/VelkaUloha.dir/rule
+.PHONY : VelkaUloha
 
 # clean rule for target.
-CMakeFiles/velkauloha.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/velkauloha.dir/build.make CMakeFiles/velkauloha.dir/clean
-.PHONY : CMakeFiles/velkauloha.dir/clean
+CMakeFiles/VelkaUloha.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/clean
+.PHONY : CMakeFiles/VelkaUloha.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
