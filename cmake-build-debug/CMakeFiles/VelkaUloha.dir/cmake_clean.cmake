@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/VelkaUloha.dir/AST.cpp.o.d"
   "CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.o"
   "CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.o.d"
+  "CMakeFiles/VelkaUloha.dir/CPos.cpp.o"
+  "CMakeFiles/VelkaUloha.dir/CPos.cpp.o.d"
   "CMakeFiles/VelkaUloha.dir/test.cpp.o"
   "CMakeFiles/VelkaUloha.dir/test.cpp.o.d"
   "VelkaUloha"

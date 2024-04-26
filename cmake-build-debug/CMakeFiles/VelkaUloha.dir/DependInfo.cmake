@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/adam/Documents/School/velkauloha/AST.cpp" "CMakeFiles/VelkaUloha.dir/AST.cpp.o" "gcc" "CMakeFiles/VelkaUloha.dir/AST.cpp.o.d"
   "/home/adam/Documents/School/velkauloha/ASTBuilder.cpp" "CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.o" "gcc" "CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.o.d"
+  "/home/adam/Documents/School/velkauloha/CPos.cpp" "CMakeFiles/VelkaUloha.dir/CPos.cpp.o" "gcc" "CMakeFiles/VelkaUloha.dir/CPos.cpp.o.d"
   "/home/adam/Documents/School/velkauloha/test.cpp" "CMakeFiles/VelkaUloha.dir/test.cpp.o" "gcc" "CMakeFiles/VelkaUloha.dir/test.cpp.o.d"
   )
 

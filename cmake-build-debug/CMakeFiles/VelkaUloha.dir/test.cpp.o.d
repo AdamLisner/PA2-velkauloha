@@ -267,4 +267,6 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: \
  /home/adam/Documents/School/velkauloha/expression.h \
  /home/adam/Documents/School/velkauloha/ASTBuilder.h \
  /home/adam/Documents/School/velkauloha/AST.h \
- /home/adam/Documents/School/velkauloha/CCell.h
+ /home/adam/Documents/School/velkauloha/hash_pair.h \
+ /home/adam/Documents/School/velkauloha/CCell.h \
+ /home/adam/Documents/School/velkauloha/CPos.h

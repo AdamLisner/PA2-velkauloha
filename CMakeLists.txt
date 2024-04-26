@@ -8,6 +8,9 @@ set(SOURCES
         test.cpp
         ASTBuilder.cpp
         AST.cpp
+        CPos.h
+        CPos.cpp
+        hash_pair.h
 )
 
 # Include directories

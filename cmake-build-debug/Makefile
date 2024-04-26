@@ -177,6 +177,30 @@ ASTBuilder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.s
 .PHONY : ASTBuilder.cpp.s
 
+CPos.o: CPos.cpp.o
+.PHONY : CPos.o
+
+# target to build an object file
+CPos.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/CPos.cpp.o
+.PHONY : CPos.cpp.o
+
+CPos.i: CPos.cpp.i
+.PHONY : CPos.i
+
+# target to preprocess a source file
+CPos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/CPos.cpp.i
+.PHONY : CPos.cpp.i
+
+CPos.s: CPos.cpp.s
+.PHONY : CPos.s
+
+# target to generate assembly for a file
+CPos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VelkaUloha.dir/build.make CMakeFiles/VelkaUloha.dir/CPos.cpp.s
+.PHONY : CPos.cpp.s
+
 test.o: test.cpp.o
 .PHONY : test.o
 
@@ -216,6 +240,9 @@ help:
 	@echo "... ASTBuilder.o"
 	@echo "... ASTBuilder.i"
 	@echo "... ASTBuilder.s"
+	@echo "... CPos.o"
+	@echo "... CPos.i"
+	@echo "... CPos.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

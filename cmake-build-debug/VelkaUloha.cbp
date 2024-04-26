@@ -96,6 +96,15 @@
 		<Unit filename="/home/adam/Documents/School/velkauloha/ASTBuilder.h">
 			<Option target="VelkaUloha"/>
 		</Unit>
+		<Unit filename="/home/adam/Documents/School/velkauloha/CPos.cpp">
+			<Option target="VelkaUloha"/>
+		</Unit>
+		<Unit filename="/home/adam/Documents/School/velkauloha/CPos.h">
+			<Option target="VelkaUloha"/>
+		</Unit>
+		<Unit filename="/home/adam/Documents/School/velkauloha/hash_pair.h">
+			<Option target="VelkaUloha"/>
+		</Unit>
 		<Unit filename="/home/adam/Documents/School/velkauloha/test.cpp">
 			<Option target="VelkaUloha"/>
 		</Unit>
