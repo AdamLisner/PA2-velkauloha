@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/velkauloha.dir/test.cpp.o CMakeFiles/velkauloha.dir/ASTBuilder.cpp.o CMakeFiles/velkauloha.dir/AST.cpp.o -o velkauloha 

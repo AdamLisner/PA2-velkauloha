@@ -81,10 +81,13 @@ CMakeFiles/VelkaUloha.dir/AST.cpp.o: /home/adam/Documents/School/velkauloha/AST.
   /usr/include/c++/11/bits/stl_iterator.h \
   /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
   /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/stl_raw_storage_iter.h \
   /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/stl_set.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/stl_tree.h \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -134,6 +137,7 @@ CMakeFiles/VelkaUloha.dir/AST.cpp.o: /home/adam/Documents/School/velkauloha/AST.
   /usr/include/c++/11/pstl/execution_defs.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/set \
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/streambuf \
   /usr/include/c++/11/string \
@@ -373,11 +377,14 @@ CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.o: /home/adam/Documents/School/velkaulo
   /usr/include/c++/11/bits/stl_iterator.h \
   /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
   /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/stl_raw_storage_iter.h \
   /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/stl_set.h \
   /usr/include/c++/11/bits/stl_stack.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/stl_tree.h \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -430,6 +437,7 @@ CMakeFiles/VelkaUloha.dir/ASTBuilder.cpp.o: /home/adam/Documents/School/velkaulo
   /usr/include/c++/11/pstl/execution_defs.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/set \
   /usr/include/c++/11/stack \
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/streambuf \
@@ -1119,8 +1127,6 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 
 /usr/include/c++/11/sstream:
 
-/usr/include/linux/limits.h:
-
 /usr/include/features.h:
 
 /usr/include/c++/11/bits/shared_ptr_atomic.h:
@@ -1141,15 +1147,21 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 
 /usr/include/c++/11/tr1/bessel_function.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
-
 /usr/include/c++/11/bits/stl_multiset.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
 /usr/include/libintl.h:
 
 /usr/include/c++/11/string:
 
 /usr/include/c++/11/stdexcept:
+
+/usr/include/c++/11/set:
+
+/usr/include/c++/11/bits/cxxabi_forced.h:
+
+/usr/include/c++/11/system_error:
 
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
@@ -1211,12 +1223,6 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 
 /usr/include/sched.h:
 
-/usr/include/linux/errno.h:
-
-/usr/include/c++/11/iostream:
-
-/usr/include/c++/11/bits/exception_defines.h:
-
 /usr/include/c++/11/tr1/gamma.tcc:
 
 /usr/include/stdc-predef.h:
@@ -1240,6 +1246,12 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 /usr/include/c++/11/algorithm:
 
 /usr/include/c++/11/ostream:
+
+/usr/include/c++/11/bits/stl_set.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/include/alloca.h:
 
 /usr/include/c++/11/pstl/pstl_config.h:
 
@@ -1269,13 +1281,9 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 
 /usr/include/c++/11/bits/unordered_map.h:
 
-/usr/include/c++/11/bits/cxxabi_forced.h:
-
-/usr/include/c++/11/system_error:
-
-/usr/include/c++/11/set:
-
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/11/bits/exception_defines.h:
 
 /usr/include/c++/11/compare:
 
@@ -1304,10 +1312,6 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/c++/11/bits/ios_base.h:
-
-/usr/include/stdint.h:
-
-/usr/include/errno.h:
 
 /usr/include/c++/11/bits/uses_allocator.h:
 
@@ -1396,12 +1400,6 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 /usr/include/c++/11/variant:
 
 /usr/include/c++/11/ext/string_conversions.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/include/alloca.h:
-
-/usr/include/c++/11/bits/stl_set.h:
 
 /usr/include/c++/11/utility:
 
@@ -1503,6 +1501,10 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 
 /usr/include/c++/11/bits/ranges_base.h:
 
+/usr/include/c++/11/bits/stl_tree.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/c++/11/bits/algorithmfwd.h:
@@ -1528,6 +1530,16 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 /usr/include/c++/11/charconv:
 
 /usr/include/c++/11/bits/vector.tcc:
+
+/usr/include/errno.h:
+
+/usr/include/stdint.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/c++/11/iostream:
+
+/usr/include/linux/limits.h:
 
 /usr/include/locale.h:
 
@@ -1766,10 +1778,6 @@ CMakeFiles/VelkaUloha.dir/test.cpp.o: /home/adam/Documents/School/velkauloha/tes
 /usr/include/c++/11/bits/stl_multimap.h:
 
 /usr/include/c++/11/bits/unordered_set.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/c++/11/bits/stl_tree.h:
 
 /usr/include/c++/11/cassert:
 

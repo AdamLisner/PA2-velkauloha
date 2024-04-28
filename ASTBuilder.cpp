@@ -5,7 +5,7 @@ using ANode = std::shared_ptr<ASTNode>;
 
 
 void ASTBuilder::opAdd() {
-    std::cout << " + ";
+//    std::cout << " + ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -17,7 +17,7 @@ void ASTBuilder::opAdd() {
 }
 
 void ASTBuilder::opSub() {
-    std::cout << " - ";
+//    std::cout << " - ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -27,7 +27,7 @@ void ASTBuilder::opSub() {
 }
 
 void ASTBuilder::opMul() {
-    std::cout << " * ";
+//    std::cout << " * ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -37,7 +37,7 @@ void ASTBuilder::opMul() {
 }
 
 void ASTBuilder::opDiv() {
-    std::cout << " / ";
+//    std::cout << " / ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -48,7 +48,7 @@ void ASTBuilder::opDiv() {
 
 void ASTBuilder::opPow() {
     //ASTPow pow;
-    std::cout << " ^ ";
+//    std::cout << " ^ ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -58,7 +58,7 @@ void ASTBuilder::opPow() {
 }
 
 void ASTBuilder::opNeg() {
-    std::cout << " - ";
+//    std::cout << " - ";
     ANode child = m_Stack.top();
     m_Stack.pop();
     ASTNeg minus(child);
@@ -68,7 +68,7 @@ void ASTBuilder::opNeg() {
 }
 
 void ASTBuilder::opEq() {
-    std::cout << " == ";
+//    std::cout << " == ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -79,7 +79,7 @@ void ASTBuilder::opEq() {
 }
 
 void ASTBuilder::opNe() {
-    std::cout << " != ";
+//    std::cout << " != ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -90,7 +90,7 @@ void ASTBuilder::opNe() {
 }
 
 void ASTBuilder::opLt() {
-    std::cout << " < ";
+//    std::cout << " < ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -101,7 +101,7 @@ void ASTBuilder::opLt() {
 }
 
 void ASTBuilder::opLe() {
-    std::cout << " <= ";
+//    std::cout << " <= ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -112,7 +112,7 @@ void ASTBuilder::opLe() {
 }
 
 void ASTBuilder::opGt() {
-    std::cout << " > ";
+//    std::cout << " > ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -123,7 +123,7 @@ void ASTBuilder::opGt() {
 }
 
 void ASTBuilder::opGe() {
-    std::cout << " >= ";
+//    std::cout << " >= ";
     ANode right = m_Stack.top();
     m_Stack.pop();
     ANode left = m_Stack.top();
@@ -137,19 +137,19 @@ void ASTBuilder::valNumber(double val) {
     // Implementation for handling numeric value
     ASTNodeValue node(val);
     m_Stack.push(std::make_shared<ASTNodeValue>(node));
-    std::cout << val;
+//    std::cout << val;
 }
 
 void ASTBuilder::valString(std::string val) {
     // Implementation for handling string value
     ASTNodeValue node(val);
     m_Stack.push(std::make_shared<ASTNodeValue>(node));
-    std::cout << val;
+//    std::cout << val;
 }
 
 void ASTBuilder::valReference(std::string val) {
     // Implementation for handling reference value
-    std::cout << " " << val << " ";
+//    std::cout << " " << val << " ";
     int count = 0;
     bool absCol = false;
     bool absRow = false;

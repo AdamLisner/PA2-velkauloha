@@ -2,6 +2,7 @@
 #include <variant>
 #include <cmath>
 #include <unordered_map>
+#include <set>
 #include "memory"
 #include "hash_pair.h"
 
@@ -12,6 +13,7 @@ public:
     virtual void moveRelative(std::pair<size_t,size_t> offset) = 0;
     virtual CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const = 0;
     virtual std::string toString() const = 0;
+    virtual std::shared_ptr<ASTNode> clone() const = 0;
 protected:
 private:
 };
@@ -24,6 +26,8 @@ public:
     ASTNodeValue(CValue c) : m_Val(std::move(c)) {};
 
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     void moveRelative(std::pair<size_t, size_t> offset) override{
 
@@ -46,6 +50,8 @@ public:
     CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
     std::string toString() const override;
 
+    std::shared_ptr<ASTNode> clone() const override;
+
 private:
     bool m_AbsCol = false;
     bool m_AbsRow = false;
@@ -58,6 +64,8 @@ public:
     void moveRelative(std::pair<size_t, size_t> offset) override;
     virtual std::string toString() const = 0;
 
+    virtual std::shared_ptr<ASTNode> clone() const = 0;
+
 protected:
     ANode m_Left;
     ANode m_Right;
@@ -68,14 +76,19 @@ class ASTAdd : public ASTBinOperator {
 public:
     ASTAdd(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
     std::string toString() const override;
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
+
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
 };
 
 class ASTSub : public ASTBinOperator {
 public:
     ASTSub(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
     std::string toString() const override;
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
 };
 
@@ -84,8 +97,9 @@ public:
     ASTDiv(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
     std::string toString() const override;
 
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
 
+    std::shared_ptr<ASTNode> clone() const override;
 };
 
 class ASTMul : public ASTBinOperator {
@@ -93,13 +107,18 @@ public:
     ASTMul(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
     std::string toString() const override;
 
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    std::shared_ptr<ASTNode> clone() const override;
+
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
 
 };
 
 class ASTPow : public ASTBinOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
+
     std::string toString() const override;
 
     ASTPow(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
@@ -107,48 +126,60 @@ public:
 
 class ASTEq : public ASTBinOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     ASTEq(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 };
 
 class ASTNe : public ASTBinOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     ASTNe(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 };
 
 class ASTLt : public ASTBinOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     ASTLt(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 };
 
 class ASTLe : public ASTBinOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     ASTLe(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 };
 
 class ASTGt : public ASTBinOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     ASTGt(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 };
 
 class ASTGe : public ASTBinOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     ASTGe(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 };
@@ -159,14 +190,18 @@ public:
     void moveRelative(std::pair<size_t, size_t> offset) override;
     virtual std::string toString() const = 0;
 
+    virtual std::shared_ptr<ASTNode> clone() const = 0;
+
 protected:
     ANode m_Child;
 };
 
 class ASTNeg : public ASTUnOperator {
 public:
-    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map) const override;
+    CValue evaluate(const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>,hash_pair> &map ) const override;
     std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
 
     ASTNeg(ANode child) : ASTUnOperator(std::move(child)) {};
 };

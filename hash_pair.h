@@ -3,18 +3,11 @@
 #include <functional>
 
 /*
- * Quelle: https://www.geeksforgeeks.org/how-to-create-an-unordered_map-of-pairs-in-c/
+ * Quelle: https://www.geeksforgeeks.org/how-to-create-an-unordered_map-of-pairs-in-c/ + ChatGPT
  *
  * */
 struct hash_pair {
-    size_t operator()(const std::pair<size_t, size_t> &p) const {
-        auto hash1 = std::hash<size_t>{}(p.first);
-        auto hash2 = std::hash<size_t>{}(p.second);
-
-        if (hash1 != hash2) {
-            return hash1 ^ hash2;
-        }
-
-        return hash1;
+    std::size_t operator () (const std::pair<size_t, size_t>& p) const {
+        return (p.first + 0x9e3779b9 + (p.first >> 6) + (p.first << 8))^(p.second + 0x9e3779b9 + (p.second << 7) + (p.second >> 3));
     }
 };
