@@ -1,5 +1,18 @@
 #include "ASTBuilder.h"
-#include "CPos.h"
+#include "ASTAdd.h"
+#include "ASTSub.h"
+#include "ASTMul.h"
+#include "ASTDiv.h"
+#include "ASTPow.h"
+#include "ASTNeg.h"
+#include "ASTEq.h"
+#include "ASTNe.h"
+#include "ASTLt.h"
+#include "ASTLe.h"
+#include "ASTGt.h"
+#include "ASTGe.h"
+#include "ASTNodeValue.h"
+#include "ASTNodeReference.h"
 
 using ANode = std::shared_ptr<ASTNode>;
 
@@ -11,7 +24,7 @@ void ASTBuilder::opAdd() {
     ANode left = m_Stack.top();
     m_Stack.pop();
 
-    ASTAdd add(left,right);
+    ASTAdd add(left, right);
 
     m_Stack.push(std::make_shared<ASTAdd>(add));
 }
@@ -22,7 +35,7 @@ void ASTBuilder::opSub() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTSub sub(left,right);
+    ASTSub sub(left, right);
     m_Stack.push(std::make_shared<ASTSub>(sub));
 }
 
@@ -32,7 +45,7 @@ void ASTBuilder::opMul() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTMul mul(left,right);
+    ASTMul mul(left, right);
     m_Stack.push(std::make_shared<ASTMul>(mul));
 }
 
@@ -42,7 +55,7 @@ void ASTBuilder::opDiv() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTDiv div(left,right);
+    ASTDiv div(left, right);
     m_Stack.push(std::make_shared<ASTDiv>(div));
 }
 
@@ -53,7 +66,7 @@ void ASTBuilder::opPow() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTPow pow(left,right);
+    ASTPow pow(left, right);
     m_Stack.push(std::make_shared<ASTPow>(pow));
 }
 
@@ -73,7 +86,7 @@ void ASTBuilder::opEq() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTEq eq(left,right);
+    ASTEq eq(left, right);
     m_Stack.push(std::make_shared<ASTEq>(eq));
     // Implementation for equality operator
 }
@@ -84,7 +97,7 @@ void ASTBuilder::opNe() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTNe ne(left,right);
+    ASTNe ne(left, right);
     m_Stack.push(std::make_shared<ASTNe>(ne));
     // Implementation for inequality operator
 }
@@ -95,7 +108,7 @@ void ASTBuilder::opLt() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTLt lt(left,right);
+    ASTLt lt(left, right);
     m_Stack.push(std::make_shared<ASTLt>(lt));
     // Implementation for less than operator
 }
@@ -106,7 +119,7 @@ void ASTBuilder::opLe() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTLe le(left,right);
+    ASTLe le(left, right);
     m_Stack.push(std::make_shared<ASTLe>(le));
     // Implementation for less than or equal to operator
 }
@@ -117,7 +130,7 @@ void ASTBuilder::opGt() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTGt gt(left,right);
+    ASTGt gt(left, right);
     m_Stack.push(std::make_shared<ASTGt>(gt));
     // Implementation for greater than operator
 }
@@ -128,7 +141,7 @@ void ASTBuilder::opGe() {
     m_Stack.pop();
     ANode left = m_Stack.top();
     m_Stack.pop();
-    ASTGe ge(left,right);
+    ASTGe ge(left, right);
     m_Stack.push(std::make_shared<ASTGe>(ge));
     // Implementation for greater than or equal to operator
 }
@@ -161,7 +174,7 @@ void ASTBuilder::valReference(std::string val) {
             break;
         }
     }
-    if(count == 1 && val[0] == '$')
+    if (count == 1 && val[0] == '$')
         absCol = true;
     else if (count == 1 && val[0] != '$')
         absRow = true;
@@ -171,9 +184,9 @@ void ASTBuilder::valReference(std::string val) {
         val.erase(pos, 1);
         pos = val.find('$', pos);
     }
-    std::pair<size_t , size_t> coor = CPos::strToPair(val);
+    std::pair<size_t, size_t> coor = CPos::strToPair(val);
 
-    ASTNodeReference node(absCol,absRow,coor);
+    ASTNodeReference node(absCol, absRow, coor);
 
     stack().push(std::make_shared<ASTNodeReference>(node));
 }

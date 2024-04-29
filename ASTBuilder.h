@@ -1,8 +1,6 @@
-#include "expression.h"
+#pragma once
+
 #include "AST.h"
-#include "stack"
-#include "memory"
-#include <iostream>
 
 
 class ASTBuilder : public CExprBuilder {
@@ -42,11 +40,13 @@ public:
 
     void funcCall(std::string fnName,
                   int paramCount) override;
-    std::stack<std::shared_ptr<ASTNode>>& stack() {
+
+    std::stack<std::shared_ptr<ASTNode>> &stack() {
         return m_Stack;
     }
+
 private:
 
-   std::stack<std::shared_ptr<ASTNode>> m_Stack;
+    std::stack<std::shared_ptr<ASTNode>> m_Stack;
 
 };

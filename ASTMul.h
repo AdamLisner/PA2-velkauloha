@@ -2,15 +2,22 @@
 // Created by adam on 29.4.24.
 //
 
-#ifndef VELKAULOHA_ASTMUL_H
-#define VELKAULOHA_ASTMUL_H
+#pragma once
+
+#include "ASTBinOperator.h"
 
 
+class ASTMul : public ASTBinOperator {
+public:
+    ASTMul(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 
-class ASTMul {
+    std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
+
+    CValue evaluate(
+            const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>, hash_pair> &map) const override;
 
 };
 
 
-
-#endif //VELKAULOHA_ASTMUL_H

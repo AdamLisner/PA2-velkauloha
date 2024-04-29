@@ -7,10 +7,25 @@ set(CMAKE_CXX_STANDARD 20)
 set(SOURCES
         test.cpp
         ASTBuilder.cpp
-        AST.cpp
-        CPos.h
+        ASTUnOperator.cpp
+        ASTBinOperator.cpp
+        ASTNodeValue.cpp
+        ASTAdd.cpp
+        ASTSub.cpp
+        ASTDiv.cpp
+        ASTMul.cpp
+        ASTEq.cpp
+        ASTNe.cpp
+        ASTLe.cpp
+        ASTGe.cpp
+        ASTNodeReference.cpp
+        ASTPow.cpp
+        ASTGt.cpp
+        ASTLt.cpp
+        ASTNeg.cpp
+        CSpreadsheet.cpp
         CPos.cpp
-        hash_pair.h
+        CPos.h
 )
 
 # Include directories

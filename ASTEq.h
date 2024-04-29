@@ -2,15 +2,22 @@
 // Created by adam on 29.4.24.
 //
 
-#ifndef VELKAULOHA_ASTEQ_H
-#define VELKAULOHA_ASTEQ_H
+#pragma once
+
+#include "ASTBinOperator.h"
 
 
+class ASTEq : public ASTBinOperator {
+public:
+    CValue evaluate(
+            const std::unordered_map<std::pair<size_t, size_t>, std::shared_ptr<ASTNode>, hash_pair> &sheet) const override;
 
-class ASTEq {
+    std::string toString() const override;
 
+    std::shared_ptr<ASTNode> clone() const override;
+
+    ASTEq(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
 };
 
 
 
-#endif //VELKAULOHA_ASTEQ_H
