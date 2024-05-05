@@ -1,0 +1,21 @@
+//
+// Created by adam on 29.4.24.
+//
+
+#pragma once
+
+#include "ASTBinOperator.h"
+
+
+class ASTLe : public ASTBinOperator {
+public:
+    CValue evaluate(const CSheet &map) const override;
+
+    std::string toString() const override;
+
+    std::shared_ptr<ASTNode> clone() const override;
+
+    ASTLe(ANode left, ANode right) : ASTBinOperator(std::move(left), std::move(right)) {};
+};
+
+

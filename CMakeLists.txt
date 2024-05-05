@@ -6,23 +6,23 @@ set(CMAKE_CXX_STANDARD 20)
 # Add your source files
 set(SOURCES
         test.cpp
-        ASTBuilder.cpp
-        ASTUnOperator.cpp
-        ASTBinOperator.cpp
-        ASTNodeValue.cpp
-        ASTAdd.cpp
-        ASTSub.cpp
-        ASTDiv.cpp
-        ASTMul.cpp
-        ASTEq.cpp
-        ASTNe.cpp
-        ASTLe.cpp
-        ASTGe.cpp
-        ASTNodeReference.cpp
-        ASTPow.cpp
-        ASTGt.cpp
-        ASTLt.cpp
-        ASTNeg.cpp
+        AST/ASTBuilder.cpp
+        AST/ASTUnOperator.cpp
+        AST/ASTBinOperator.cpp
+        AST/ASTNodeValue.cpp
+        AST/ASTAdd.cpp
+        AST/ASTSub.cpp
+        AST/ASTDiv.cpp
+        AST/ASTMul.cpp
+        AST/ASTEq.cpp
+        AST/ASTNe.cpp
+        AST/ASTLe.cpp
+        AST/ASTGe.cpp
+        AST/ASTNodeReference.cpp
+        AST/ASTPow.cpp
+        AST/ASTGt.cpp
+        AST/ASTLt.cpp
+        AST/ASTNeg.cpp
         CSpreadsheet.cpp
         CPos.cpp
         CPos.h

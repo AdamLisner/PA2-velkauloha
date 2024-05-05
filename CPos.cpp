@@ -2,12 +2,12 @@
 
 std::pair<size_t, size_t> CPos::strToPair(const std::string &str) {
 
-    std::string pos;
-
     size_t col = 0;
     size_t row = 0;
     size_t i = 0;
+
     int mul = 26;
+
     for (; !isdigit(str[i]); i++) {
         char c = (toupper)(str[i]);
         if (c < 'A' || c > 'Z') {

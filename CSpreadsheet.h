@@ -1,9 +1,9 @@
 #pragma once
 
 #include "CPos.h"
-#include "AST.h"
-#include "ASTBuilder.h"
-#include "ASTNodeValue.h"
+#include "AST/AST.h"
+#include "AST/ASTBuilder.h"
+#include "AST/ASTNodeValue.h"
 
 
 constexpr unsigned SPREADSHEET_CYCLIC_DEPS = 0x01;
@@ -51,14 +51,14 @@ public:
      * @param pos The position of the cell.
      * @return The value of the cell.
      */
-    CValue getValue(CPos pos);
+    CValue getValue(CPos pos) const;
 
     /**
      * @brief Checks if a cell in the spreadsheet is part of a cyclic dependency.
      * @param pos The position of the cell.
      * @return True if the cell is part of a cyclic dependency, otherwise false.
      */
-    bool isCyclic(CPos pos);
+    bool isCyclic(CPos pos) const;
 
     /**
      * @brief Copies a rectangular area of cells in the spreadsheet.

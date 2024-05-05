@@ -13,7 +13,7 @@ bool CSpreadsheet::setCell(CPos pos, std::string contents) {
     return true;
 }
 
-CValue CSpreadsheet::getValue(CPos pos) {
+CValue CSpreadsheet::getValue(CPos pos) const {
     std::shared_ptr<ASTNode> c;
     try {
         c = m_Sheet.at(pos.getPos());
@@ -87,7 +87,8 @@ void CSpreadsheet::copyRect(CPos dst, CPos src, int w, int h) {
     auto dstPos = dst.getPos();
     auto srcPos = src.getPos();
     if (dstPos == srcPos) return;
-    auto offset = std::make_pair(dstPos.first - srcPos.first, dstPos.second - srcPos.second);
+    auto offset = std::make_pair(dstPos.first - srcPos.first,
+                                          dstPos.second - srcPos.second); // calculate the move vector
     std::deque<std::shared_ptr<ASTNode>> treesToCopy;
     for (int i = 0; i < w; ++i) {
         for (int j = 0; j < h; ++j) {
@@ -109,7 +110,7 @@ void CSpreadsheet::copyRect(CPos dst, CPos src, int w, int h) {
     }
 }
 
-bool CSpreadsheet::isCyclic(CPos pos) {
+bool CSpreadsheet::isCyclic(CPos pos) const{
     std::unordered_set<std::pair<size_t, size_t>, hash_pair> openNodes;
     auto from = m_Sheet.at(pos.getPos());
     return from->checkCycle(openNodes, m_Sheet);
