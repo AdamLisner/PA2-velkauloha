@@ -1,6 +1,6 @@
 # FITExcel - Tabulkový procesor
 
-FITExcel je tabulkový procesor vyvinutý jako součást projektu pro předmět na FIT VUT. Umí manipulovat s buňkami, vypočítávat hodnoty podle vzorců, detekovat cyklické závislosti a ukládat/načítat obsah tabulky.
+FITExcel je tabulkový procesor vyvinutý jako součást projektu pro předmět na FIT ČVUT. Umí manipulovat s buňkami, vypočítávat hodnoty podle vzorců, detekovat cyklické závislosti a ukládat/načítat obsah tabulky.
 
 ## Obsah Repozitáře
 
